@@ -34,7 +34,6 @@ pipeline {
                 sh '''
                     docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} .
                     docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest
-A
                 '''
             }
         }
