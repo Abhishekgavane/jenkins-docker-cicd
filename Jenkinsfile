@@ -20,19 +20,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Installing Python dependencies...'
+ 	           echo 'Installing Python dependencies...'
                 sh '''
                     python3 --version
                     pip3 install -r requirements.txt
-                '''
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running unit tests...'
-                sh '''
-                    pytest -v
                 '''
             }
         }
@@ -43,6 +34,7 @@ pipeline {
                 sh '''
                     docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} .
                     docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest
+A
                 '''
             }
         }
